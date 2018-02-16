@@ -7,11 +7,23 @@ class Track extends React.Component {
     super(props);
 
     this.action = this.action.bind(this);
+    this.moveTrackUp = this.moveTrackUp.bind(this);
+    this.moveTrackDown = this.moveTrackDown.bind(this);
   }
 
   action(event) {
     var track = this.props.track;
     this.props.action(track);
+  }
+
+  moveTrackUp(event) {
+    var track = this.props.track;
+    this.props.moveTrack(track, 'up');
+  }
+
+  moveTrackDown(event) {
+    var track = this.props.track;
+    this.props.moveTrack(track, 'down');
   }
 
   render() {
@@ -21,7 +33,13 @@ class Track extends React.Component {
     }
     else
     {
-       link = <a className={"Track-action"} onClick={this.action}>-</a>;
+      link = (
+      <div className="Modify-Links">
+        <a className={"Move-up"} onClick={this.moveTrackUp}>^</a>
+        <a className={"Track-action"} onClick={this.action}>-</a>
+        <a className={"Move-down"} onClick={this.moveTrackDown}>v</a>
+      </div>
+      );
     }
 
     return (

@@ -12,9 +12,43 @@
   transition: color .25s;
 }
 
-.Track-action:hover {
-  color: rgba(265, 265, 265, .5);
+
+.Modify-Links {
+  display: grid;
+  grid-template: 3 / 1;
+  grid-row-gap: -10px;
 }
+
+.Move-up {
+  margin-left: 9px;
+  margin-bottom: -20px;
+  cursor: pointer;
+  transition: color .25s;
+}
+
+.Move-down {
+  margin-left: 9px;
+  cursor: pointer;
+  margin-top: -15px;
+  transition: color .25s;
+}
+
+.Track-action:hover {
+  color: #f44242;
+  opacity: 0.5;
+}
+
+.Move-up:hover {
+  color: #22cc52;
+  opacity: 0.5;
+}
+
+.Move-down:hover {
+  color: #22cc52;
+  opacity: 0.5;
+}
+
+
 
 .Track-information {
   flex-grow: 1;

@@ -8,7 +8,7 @@ class TrackList extends React.Component {
         <div className="TrackList">
           {
             this.props.tracks.map(track => {
-              return <Track action={this.props.action} track={track} type={this.props.type}/>;
+              return <Track action={this.props.action} moveTrack={this.props.moveTrack} track={track} type={this.props.type}/>;
             })
           }
         </div>

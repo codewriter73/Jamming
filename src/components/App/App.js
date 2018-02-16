@@ -18,6 +18,7 @@ class App extends Component {
     this.addTrack = this.addTrack.bind(this);
     this.saveToSpotify = this.saveToSpotify.bind(this);
     this.removeTrack = this.removeTrack.bind(this);
+    this.moveTrack = this.moveTrack.bind(this);
   }
 
   searchSpotify(term) {
@@ -44,6 +45,28 @@ class App extends Component {
       this.forceUpdate();
   }
 
+  moveTrack(track, func) {
+    if(func === 'up'){
+      const index = this.state.playlist.indexOf(track);
+      if(index !== 0) {
+        const temp = this.state.playlist[index - 1];
+        this.state.playlist[index - 1] = this.state.playlist[index];
+        this.state.playlist[index] = temp;
+        this.setState({playlist: this.state.playlist});
+      }
+    }
+    if(func === 'down'){
+      const index = this.state.playlist.indexOf(track);
+      if(index !== this.state.playlist.length - 1) {
+        const temp = this.state.playlist[index + 1];
+        this.state.playlist[index + 1] = this.state.playlist[index];
+        this.state.playlist[index] = temp;
+        this.setState({playlist: this.state.playlist});
+      }
+    }
+    return;
+  }
+
   render() {
     return (
       <div>
@@ -52,7 +75,7 @@ class App extends Component {
           <SearchBar searchSpotify={this.searchSpotify} />
           <div className="Appplaylist">
             <SearchResults tracks={this.state.tracks} addTrack={this.addTrack}/>
-            <PlayList tracks={this.state.playlist} saveToSpotify={this.saveToSpotify} removeTrack={this.removeTrack}/>
+            <PlayList tracks={this.state.playlist} moveTrack={this.moveTrack} saveToSpotify={this.saveToSpotify} removeTrack={this.removeTrack}/>
           </div>
         </div>
       </div>
